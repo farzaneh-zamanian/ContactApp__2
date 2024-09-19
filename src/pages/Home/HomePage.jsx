@@ -15,7 +15,6 @@ function HomePage() {
 
       {/* Features Section */}
       <section className={styles.features}>
-        <h2>Discover the power of a phone book</h2>
         <div className={styles.grid}>
           {/* Feature 1 */}
           <div className={`${styles.feature} boxShadow` } >
