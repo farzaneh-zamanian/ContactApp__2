@@ -6,6 +6,7 @@
   color: #242424;
   --color-primary: #303030;
   --color-accent: #8bc34a;
+  --color-bg: #f7f7f7;
 }
 *,
 *::after,
