@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "name": "John",
+      "lastName": "Doe",
+      "email": "johndoe@example.com",
+      "telephone": "09173200197"
+    },
+    {
+      "name": "Sara",
+      "lastName": "Smith",
+      "email": "Sara@example.com",
+      "telephone": "09173200198"
+    },
+    {
+      "name": "John",
+      "lastName": "Doe",
+      "email": "johndoe@example.com",
+      "telephone": "09173200197"
+    },
+    {
+      "name": "Emily",
+      "lastName": "Chen",
+      "email": "emilychen@example.com",
+      "telephone": "09173200199"
+    },
+    {
+      "name": "Michael",
+      "lastName": "Brown",
+      "email": "michaelbrown@example.com",
+      "telephone": "09173200200"
+    }
+  ]
+}
