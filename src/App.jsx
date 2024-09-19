@@ -1,5 +1,14 @@
+import StyledDiv from "./components/StyledDiv";
+import Layout from "./Layouts/Layout";
+
 function App() {
-  return <>hello</>;
+  return (
+    <>
+      <Layout>
+       
+      </Layout>
+    </>
+  );
 }
 
 export default App;
