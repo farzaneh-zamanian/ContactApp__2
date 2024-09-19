@@ -4,6 +4,8 @@
 
   color-scheme: light dark;
   color: #242424;
+  --color-primary: #303030;
+  --color-accent: #8bc34a;
 }
 *,
 *::after,
@@ -28,4 +30,7 @@ a {
 }
 li {
   list-style: none;
+}
+.boxShadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
