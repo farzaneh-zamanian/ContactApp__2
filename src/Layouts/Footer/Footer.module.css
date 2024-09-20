@@ -2,8 +2,9 @@
   text-align: center;
   background-color: var(--color-primary);
   padding: 2rem;
-  border-radius: 1rem;
   color: #fff;
+  border-radius: 0.5rem;
+
   font-weight: 600;
   font-size: 1.2rem;
 }

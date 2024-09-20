@@ -1,9 +1,8 @@
-import StyledDiv from "./components/StyledDiv";
 import Layout from "./Layouts/Layout";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import NotFoundPage from "./pages/404/NotFoundPage";
-import ContactForm from "./pages/ContactForm/ContactForm";
+import ContactView from "./pages/ContactView/ContactView";
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="contacts" element={<ContactForm />} />
+          <Route path="contacts" element={<ContactView />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
