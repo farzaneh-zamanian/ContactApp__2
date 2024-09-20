@@ -4,16 +4,19 @@ import styles from "./ContactForm.module.css";
 
 function ContactForm() {
   return (
-    <div className={styles.container}>
-      {inputs.map((input) => (
+    <>
+     <div className={styles.container}>
+      {inputs.map((input,index) => (
         <input
+        key={index}
           type={input.type}
           name={input.name}
           placeholder={input.placeholder}
         />
       ))}
       <button className={styles.addBtn}>Add contact</button>
-    </div>
+    </div></>
+   
   );
 }
 
