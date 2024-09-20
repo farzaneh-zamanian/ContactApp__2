@@ -1,0 +1,66 @@
+/* ContactForm.css */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0 15rem 4rem;
+}
+
+.container input {
+  width: 45%; /* Adjust the width to fit two columns */
+  height: 4rem;
+  margin: 1rem; /* create space between inputs */
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Add some visual flair with hover and focus states */
+.container input:hover {
+  opacity: 0.7;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.container input:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.container input::placeholder {
+  color: #999;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+/* Remove the inner shadow in Chrome */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container .addBtn {
+  background-color: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.container .addBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.container .addBtn:active {
+  background-color: var(--color-accent);
+  /* Reduce the opacity on active state to give a pressed effect */
+  opacity: 0.8;
+}
