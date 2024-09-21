@@ -3,20 +3,20 @@ import styles from "./ContactList.module.css";
 import { BsTelephoneForward } from "react-icons/bs";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
+import { GoHeartFill } from "react-icons/go";
 import SearchBox from "../SearchBox/SearchBox";
+import { api } from "../../services/config";
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/contacts")
-      .then((response) => response.json())
-      .then((data) => {
-        setContacts(data);
+    api
+      .get("/contacts") 
+      .then((response) => {
+        setContacts(response.data);
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      .catch((error) => console.log(error));
   }, []);
 
   return (
@@ -25,7 +25,8 @@ function ContactList() {
         <h2>Contacts List</h2>
         <SearchBox />
       </div>
-
+      {/* skeleton loading contacts */}
+      {/* {!contacts.length && !error && <h3>Loading</h3>} */}
       <ul>
         {contacts.map((contact) => (
           <li key={contact.id} className={styles.contactItem}>
@@ -57,6 +58,9 @@ function ContactList() {
                 onClick={() => handleDelete(contact.id)}
               >
                 <AiTwotoneDelete fontSize="1.6rem" />
+              </button>
+              <button className={styles.favoriteBtn}>
+                <GoHeartFill fontSize="1.6rem" />
               </button>
             </div>
           </li>
