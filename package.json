@@ -3,20 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts1": {
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "scripts": {
-    "dev:server": "json-server --watch src/constants/mockData.json --port 3000 --routes mockData.json",
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "dev:all": "npx concurrently \"npm run dev:server\" \"npm run dev\""
-  },
+ 
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

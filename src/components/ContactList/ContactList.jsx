@@ -3,6 +3,7 @@ import styles from "./ContactList.module.css";
 import { BsTelephoneForward } from "react-icons/bs";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
+import SearchBox from "../SearchBox/SearchBox";
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
@@ -20,7 +21,11 @@ function ContactList() {
 
   return (
     <div className={styles.container}>
-      <h2>Contacts List</h2>
+      <div className={styles.ContactListHeader}>
+        <h2>Contacts List</h2>
+        <SearchBox />
+      </div>
+
       <ul>
         {contacts.map((contact) => (
           <li key={contact.id} className={styles.contactItem}>
