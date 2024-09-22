@@ -12,7 +12,7 @@ import { useContacts } from "../../context/ContactsProvider";
 
 function ContactList() {
   // this is the state of contacts in provider
-  const { contacts, error, handleEdit, handleDelete } = useContacts();
+  const { contacts, deleteContactHandler } = useContacts();
 
   return (
     <div className={styles.container}>
@@ -64,7 +64,7 @@ function ContactList() {
 
                 <button
                   className={styles.deleteBtn}
-                  onClick={() => handleDelete(contact.id)}
+                  onClick={() => deleteContactHandler(contact.id)}
                 >
                   <AiTwotoneDelete fontSize="1.6rem" />
                 </button>

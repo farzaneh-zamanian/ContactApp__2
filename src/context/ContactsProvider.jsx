@@ -5,14 +5,10 @@ const ContactsContext = createContext();
 
 function ContactsProvider({ children }) {
   const [contacts, setContacts] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+
   
-  // const [contact, setContact] = useState({
-  //   name: "",
-  //   lastName: "",
-  //   email: "",
-  //   telephone: "",
-  //   description: "",
-  // });
 
 
 
@@ -30,12 +26,22 @@ function ContactsProvider({ children }) {
     setTimeout(fetchContacts, 1000);
   }, []);
 
+  const deleteContactHandler = async (id) => {
+    try {
+      await api.delete(`/contacts/${id}`);
+      setContacts(contacts.filter((contact) => contact.id !== id));
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+
 
 
   
   return (
     // provider - value
-    <ContactsContext.Provider value={{ contacts, setContacts }}>
+    <ContactsContext.Provider value={{ contacts, setContacts,deleteContactHandler }}>
       {children}
     </ContactsContext.Provider>
   );
