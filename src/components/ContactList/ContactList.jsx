@@ -8,25 +8,30 @@ import SearchBox from "../SearchBox/SearchBox";
 import { api } from "../../services/config";
 import LoadingContacts from "../Loading/Loading";
 import { Link } from "react-router-dom";
+import { useContacts } from "../../context/ContactsProvider";
 
 function ContactList() {
-  const [contacts, setContacts] = useState([]);
-  const [isloading, setIsLoding] = useState(true);
-  useEffect(() => {
-    const fetchContacts = () => {
-      api
-        .get("/contacts/")
-        .then((response) => {
-          setContacts(response.data);
-          console.log(contacts);
-          setIsLoding(!isloading);
-        })
-        .catch((error) => console.log(error));
-    };
+  // this is the state of contacts in provider
+  const { contacts, isLoading, error, handleEdit, handleDelete } = useContacts();
 
-    // Fetch contacts after 1 seconds to show skeleton loading
-    setTimeout(fetchContacts, 1000);
-  }, []);
+  // const [isloading, setIsLoding] = useState(true);
+
+
+  // useEffect(() => {
+  //   const fetchContacts = () => {
+  //     api
+  //       .get("/contacts/")
+  //       .then((response) => {
+  //         setContacts(response);
+  //         console.log(contacts);
+  //         setIsLoding(!isloading);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
+
+  //   // Fetch contacts after 1 seconds to show skeleton loading
+  //   setTimeout(fetchContacts, 1000);
+  // }, []);
 
   return (
     <div className={styles.container}>
@@ -34,9 +39,8 @@ function ContactList() {
         <h2>Contacts List</h2>
         <SearchBox />
       </div>
-      {/* skeleton loading contacts */}
       {/* {!contacts.length && !error && <h3>Loading</h3>} */}
-      {isloading ? (
+      {isLoading ? (
         <LoadingContacts />
       ) : (
         <ul>
@@ -56,7 +60,15 @@ function ContactList() {
                       {contact.name} {contact.lastName}
                     </h3>
                     <p>{contact.email}</p>
-                    <p>{contact.telephone}</p>
+                    <p>
+                      <BsTelephoneForward />
+                      <span className={styles.telephone}>
+                        <a href={`tel:${contact.telephone}`}>
+                          {" "}
+                          {contact.telephone}
+                        </a>
+                      </span>
+                    </p>
                   </div>
                 </div>
               </Link>

@@ -14,6 +14,9 @@ function Header() {
           <li>
             <NavLink to="contacts">Contacts</NavLink>
           </li>
+          <li>
+            <NavLink to="favoriteContacts">favContacts</NavLink>
+          </li>
         </ul>
       </nav>
 

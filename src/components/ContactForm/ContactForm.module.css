@@ -9,17 +9,16 @@
 }
 
 .container input {
-  width: 45%; /* Adjust the width to fit two columns */
+  width: 46%;
   height: 4rem;
-  margin: 1rem; /* create space between inputs */
-  padding: 1rem;
+  margin: 1rem;
   font-size: 1.5rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   transition: all 0.3s ease;
+  padding: 1rem;
 }
 
-/* Add some visual flair with hover and focus states */
 .container input:hover {
   opacity: 0.7;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -42,6 +41,34 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.container textarea {
+  width: 100%; /* take up the full width of the container */
+  height: 10rem;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* include padding and border in width calculation */
+  resize: none; /* prevent textarea from being resizable */
+}
+
+.container textarea:hover {
+  opacity: 0.7;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.container textarea:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.container textarea::placeholder {
+  color: #999;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
 .container .addBtn {
   background-color: var(--color-accent);
   color: #fff;
@@ -61,6 +88,5 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .container .addBtn:active {
   background-color: var(--color-accent);
-  /* Reduce the opacity on active state to give a pressed effect */
   opacity: 0.8;
 }

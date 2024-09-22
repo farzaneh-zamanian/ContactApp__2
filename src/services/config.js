@@ -7,19 +7,14 @@ const api = axios.create({
       baseURL: URL
 })
 api.interceptors.request.use(
-      (request) => {
-            return request;
-      },
-      (error) => {
-            return Promise.reject(error)
-      });
+      (request) => request,
+
+      (error) => Promise.reject(error)
+);
 
 api.interceptors.response.use(
-      (response) => {
-            return response;
-      },
-      (error) => {
-            return Promise.reject(error)
-      })
+      (response) => response.data,
+      (error) => Promise.reject(error)
+)
 
 export { api }

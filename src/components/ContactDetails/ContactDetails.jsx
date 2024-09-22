@@ -15,7 +15,7 @@ function ContactDetails() {
       api
         .get(`/contacts/${params.id}`)
         .then((response) => {
-          setContact(response.data);
+          setContact(response);
           setLoading(false);
         })
         .catch((error) => {
