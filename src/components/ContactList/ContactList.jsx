@@ -7,17 +7,18 @@ import { GoHeartFill } from "react-icons/go";
 import SearchBox from "../SearchBox/SearchBox";
 import { api } from "../../services/config";
 import LoadingContacts from "../Loading/Loading";
+import { Link } from "react-router-dom";
 
 function ContactList() {
   const [contacts, setContacts] = useState([]);
   const [isloading, setIsLoding] = useState(true);
   useEffect(() => {
-   
     const fetchContacts = () => {
       api
-        .get("/contacts")
+        .get("/contacts/")
         .then((response) => {
           setContacts(response.data);
+          console.log(contacts);
           setIsLoding(!isloading);
         })
         .catch((error) => console.log(error));
@@ -41,20 +42,24 @@ function ContactList() {
         <ul>
           {contacts.map((contact) => (
             <li key={contact.id} className={styles.contactItem}>
-              {/* contact info */}
-              <div className={styles.avatar}>
-                <img
-                  src={`https://ui-avatars.com/api/?name=${contact.name}+${contact.lastName}`}
-                  alt={contact.name}
-                />
-              </div>
-              <div className={styles.contactInfo}>
-                <h3>
-                  {contact.name} {contact.lastName}
-                </h3>
-                <p>{contact.email}</p>
-                <p>{contact.telephone}</p>
-              </div>
+              <Link to={`/contacts/${contact.id}`}>
+                {/* contact info */}
+                <div className={styles.containerContactInfo}>
+                  <div className={styles.avatar}>
+                    <img
+                      src={`https://ui-avatars.com/api/?name=${contact.name}+${contact.lastName}`}
+                      alt={contact.name}
+                    />
+                  </div>
+                  <div className={styles.contactInfo}>
+                    <h3>
+                      {contact.name} {contact.lastName}
+                    </h3>
+                    <p>{contact.email}</p>
+                    <p>{contact.telephone}</p>
+                  </div>
+                </div>
+              </Link>
               {/* action buttons */}
               <div className={styles.actions}>
                 <button

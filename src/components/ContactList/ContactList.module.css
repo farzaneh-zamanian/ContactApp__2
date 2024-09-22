@@ -17,10 +17,16 @@
   font-size: 1.2rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 2rem;
   border-bottom: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.containerContactInfo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .avatar {

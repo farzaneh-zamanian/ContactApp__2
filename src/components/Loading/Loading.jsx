@@ -25,19 +25,14 @@ function Loading() {
             />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <Skeleton height={15} width={100} style={{ marginBottom: 5 }} />
-              {/* name */}
+              {/* Name */}
               <Skeleton height={15} width={150} style={{ marginBottom: 5 }} />
-              {/* email */}
+              {/* Email */}
               <Skeleton height={15} width={100} style={{ marginBottom: 5 }} />
-              {/* phone number */}
+              {/* Phone Number */}
             </div>
           </div>
-          <div style={{ display: "flex", alignItems:"center" }}>
-            <Skeleton
-              width={45}
-              height={35}
-              style={{ marginRight: 10, borderRadius: 5 }}
-            />
+          <div style={{ display: "flex", alignItems: "center" }}>
             {/* Edit button */}
             <Skeleton
               width={45}
@@ -45,8 +40,13 @@ function Loading() {
               style={{ marginRight: 10, borderRadius: 5 }}
             />
             {/* Delete button */}
-            <Skeleton width={45} height={35} style={{ borderRadius: 5 }} />
+            <Skeleton
+              width={45}
+              height={35}
+              style={{ marginRight: 10, borderRadius: 5 }}
+            />
             {/* Favorite button */}
+            <Skeleton width={45} height={35} style={{ borderRadius: 5 }} />
           </div>
         </div>
       );

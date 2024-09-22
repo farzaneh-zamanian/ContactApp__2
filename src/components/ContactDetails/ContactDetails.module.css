@@ -1,0 +1,45 @@
+.containerContactDetail {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.containerContactDetail h2 {
+  color: var(--color-accent);
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.containerContactDetail * {
+  margin-bottom: 10px;
+  color: #95a5a6; /* A gentle gray color */
+}
+
+.containerContactDetail a {
+  text-decoration: none;
+  color: #9b59b6; /* A rich purple color */
+  transition: color 0.2s ease; /* Adds a smooth hover effect */
+}
+
+.containerContactDetail a:hover {
+  color: #e74c3c; /* A deep red color */
+}
+.containerContactDetail label {
+  margin-right: 0.3rem;
+
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--color-accent); /* A dark gray color */
+}
+.containerContactDetail span {
+  color: #333;
+}
+.containerContactDetail p {
+  font-size: 1.2rem;
+}
