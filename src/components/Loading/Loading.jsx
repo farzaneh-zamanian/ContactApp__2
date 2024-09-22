@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 function Loading() {
-  return Array(5)
+  return Array(10)
     .fill({})
     .map(() => {
       return (

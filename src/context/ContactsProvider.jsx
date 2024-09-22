@@ -5,7 +5,15 @@ const ContactsContext = createContext();
 
 function ContactsProvider({ children }) {
   const [contacts, setContacts] = useState([]);
-  const [isLoading, setIsLoding] = useState(true);
+  
+  // const [contact, setContact] = useState({
+  //   name: "",
+  //   lastName: "",
+  //   email: "",
+  //   telephone: "",
+  //   description: "",
+  // });
+
 
 
   useEffect(() => {
@@ -14,7 +22,6 @@ function ContactsProvider({ children }) {
         // const response = await api.get("/contacts/");
         // setContacts(response);
         setContacts(await api.get("/contacts/"));
-        setIsLoding(!isLoading);
       } catch (error) {
         console.log(error.message);
       }
@@ -28,7 +35,7 @@ function ContactsProvider({ children }) {
   
   return (
     // provider - value
-    <ContactsContext.Provider value={{ contacts, setContacts,isLoading, setIsLoding }}>
+    <ContactsContext.Provider value={{ contacts, setContacts }}>
       {children}
     </ContactsContext.Provider>
   );

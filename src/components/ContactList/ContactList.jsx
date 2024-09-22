@@ -12,26 +12,7 @@ import { useContacts } from "../../context/ContactsProvider";
 
 function ContactList() {
   // this is the state of contacts in provider
-  const { contacts, isLoading, error, handleEdit, handleDelete } = useContacts();
-
-  // const [isloading, setIsLoding] = useState(true);
-
-
-  // useEffect(() => {
-  //   const fetchContacts = () => {
-  //     api
-  //       .get("/contacts/")
-  //       .then((response) => {
-  //         setContacts(response);
-  //         console.log(contacts);
-  //         setIsLoding(!isloading);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   };
-
-  //   // Fetch contacts after 1 seconds to show skeleton loading
-  //   setTimeout(fetchContacts, 1000);
-  // }, []);
+  const { contacts, error, handleEdit, handleDelete } = useContacts();
 
   return (
     <div className={styles.container}>
@@ -40,7 +21,7 @@ function ContactList() {
         <SearchBox />
       </div>
       {/* {!contacts.length && !error && <h3>Loading</h3>} */}
-      {isLoading ? (
+      {!contacts.length ? (
         <LoadingContacts />
       ) : (
         <ul>
