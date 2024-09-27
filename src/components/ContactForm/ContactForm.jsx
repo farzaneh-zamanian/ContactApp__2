@@ -2,40 +2,75 @@ import React, { useState } from "react";
 import inputs from "../../constants/inputs";
 import styles from "./ContactForm.module.css";
 import { validateInput } from "../../constants/inputsValidation";
-import { api } from "../../services/config";
 import { useContacts } from "../../context/ContactsProvider";
 
 function ContactForm() {
+  const { dispatch, addContactHandler, clearAlertAndError } = useContacts(); //handel action alert
+  // state - validation
+  const [errors, setErrors] = useState({
+    name: "",
+    family: "",
+    email: "",
+    telephone: "",
+  });
+
+  // state -  new contact info
   const [contact, setContact] = useState({
     name: "",
-    lastName: "",
+    family: "",
     email: "",
     telephone: "",
     description: "",
   });
 
-  // handle inputs changes and validation
+  //  handle inputs value and errors
   const changeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setContact((contact) => ({ ...contact, [name]: value }));
+    // call validation
+    const error = validateInput(name, value);
+    setErrors((errors) => ({ ...errors, [name]: error })); //errors
+    setContact((contact) => ({ ...contact, [name]: value })); //values
   };
-  // submit handler function
+
+  // handle submit button
   const submitHandler = async (event) => {
     event.preventDefault();
-    // Add the contact info to the mockData.json file using Axios
-    try {
-      const response = await api.post("/contacts",contact);
+    if (
+      // if inputs are empty
+      !contact.name ||
+      !contact.family ||
+      !contact.email ||
+      !contact.telephone ||
+      // if data is invalid in inputs
+      errors.name ||
+      errors.family ||
+      errors.email ||
+      errors.telephone
+    ) {
+      dispatch({
+        type: "SET_ALERT_MESSAGE",
+        payload: "Please enter valid data",
+      });
+      clearAlertAndError(dispatch, "SET_ALERT_MESSAGE");
+
+      return;
+    } else {
+      addContactHandler(contact);
       setContact({
-        id: "",
         name: "",
-        lastName: "",
+        family: "",
         email: "",
         telephone: "",
         description: "",
       });
-    } catch (error) {
-      console.log(error.message);
+      // reset the errors
+      setErrors({
+        name: "",
+        family: "",
+        email: "",
+        telephone: "",
+      });
     }
   };
 
@@ -53,14 +88,21 @@ function ContactForm() {
               onChange={changeHandler}
             />
           ) : (
-            <input
-              key={index}
-              type={input.type}
-              name={input.name}
-              placeholder={input.placeholder}
-              value={contact[input.name]}
-              onChange={changeHandler}
-            />
+            <div className={styles.inputErrors}>
+              <input
+                key={index}
+                type={input.type}
+                name={input.name}
+                placeholder={input.placeholder}
+                value={contact[input.name]}
+                onChange={changeHandler}
+              />
+              <div style={{ width: "100%", height: "0.5rem" }}>
+                {errors[input.name] && (
+                  <span style={{ color: "red" }}>{errors[input.name]}</span>
+                )}
+              </div>
+            </div>
           )
         )}
 

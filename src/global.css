@@ -7,6 +7,7 @@
   --color-primary: #303030;
   --color-accent: #8bc34a;
   --color-bg: #f7f7f7;
+  --color-borders: #eaeaea;
 }
 *,
 *::after,
@@ -21,11 +22,28 @@ html {
   font-size: 62.5%;
 }
 
+/* body {
+  margin: auto;
+  max-width: 1000px;
+  position: relative;
+  min-height: 100vh;
+} */
 body {
   margin: auto;
   max-width: 1000px;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+/* main {
+  flex: 1;
+} */
+
+main{
+  margin-bottom:6rem ;
+}
+
 a {
   text-decoration: none;
 }

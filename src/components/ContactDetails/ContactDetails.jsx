@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../../services/config";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./ContactDetails.module.css";
 
 function ContactDetails() {
@@ -15,7 +15,7 @@ function ContactDetails() {
       api
         .get(`/contacts/${params.id}`)
         .then((response) => {
-          setContact(response);
+          setContact(response.data);
           setLoading(false);
         })
         .catch((error) => {
@@ -24,14 +24,19 @@ function ContactDetails() {
         });
     };
     fetchContact();
-  }, [params.id]);
+  },[]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <div className={styles.containerContactDetail}>
+        <label>Error:</label>
+        <span> {error.message}</span>
+      </div>
+    );
   }
 
   if (!contact) {
@@ -55,6 +60,9 @@ function ContactDetails() {
         <label>Description:</label>
         <span>{contact.description}</span>
       </p>
+      <button className={styles.backBtn}>
+        <Link to="/contacts">Back </Link>
+      </button>
     </div>
   );
 }

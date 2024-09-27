@@ -1,0 +1,58 @@
+.inputContainer {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+.inputContainer input {
+  padding: 1rem;
+  background-color: #eee;
+  border-radius: 5px;
+}
+.inputContainer input:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+}
+.actionBtn{
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.actionBtn button{
+  padding: 1rem 1.3rem;
+
+
+}
+.actionBtn .saveChangedBtn {
+  background-color: var(--color-accent);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.actionBtn .saveChangedBtn:hover  {
+
+  box-shadow: var(--color-accent) 0px 7px 20px 0px;
+
+
+
+}
+
+.actionBtn .cancelBtn {
+  background-color: var(--color-bg);
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+
+
+}
+.actionBtn .cancelBtn:hover  {
+
+  box-shadow: #c2c1c1 0px 7px 20px 0px;
+
+
+
+}
+

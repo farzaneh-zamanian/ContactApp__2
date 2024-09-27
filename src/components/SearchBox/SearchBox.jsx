@@ -1,14 +1,46 @@
+import Input from "./Input";
 import styles from "./SearchBox.module.css";
-import { IoIosSearch } from "react-icons/io";
-
+import { useContacts } from "../../context/ContactsProvider";
 
 function SearchBox() {
+  const { state, searchValue, setSearchValue, searchInputValueHandler } =
+    useContacts();
+
+  const handleSearch = (searchValue) => {
+    const matchingContact = state.data.find((item) => {
+      return (
+        item.name?.toLowerCase().startsWith(searchValue) ||
+        item.family?.toLowerCase().startsWith(searchValue)
+      );
+    });
+    // return matchingContact ? matchingContact : null;
+    return matchingContact || null;
+  };
+
+  const changeHandler = (event) => {
+    const searchValue = event.target.value?.toLowerCase();
+    if (!searchValue) return setSearchValue("Search Name or Family");
+    const suggestedName = handleSearch(searchValue);
+    if (suggestedName) {
+      const isSearchingForFamily =
+        suggestedName &&
+        suggestedName.family?.toLowerCase().startsWith(searchValue);
+      const result = isSearchingForFamily
+        ? suggestedName.family
+            ?.toLowerCase()
+            .replace(searchValue, event.target.value)
+        : suggestedName.name
+            ?.toLowerCase()
+            .replace(searchValue, event.target.value);
+      setSearchValue(result);
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <input type="text" placeholder="search name or family" />
-      <button>
-        <IoIosSearch fontSize="2rem" />
-      </button>
+      <Input hint={searchValue} changeHandler={changeHandler} />
+
+
     </div>
   );
 }

@@ -1,19 +1,27 @@
-/* ContactForm.css */
-
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  /* kept the standard property for modern browsers */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   border-radius: 0.5rem;
   padding: 0 15rem 4rem;
+  gap: 2rem;
+  box-sizing: border-box; /* added to include padding in width calculation */
+}
+
+@media (max-width: 400px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+    flex-wrap: nowrap;
+  }
 }
 
 .container input {
-  width: 46%;
-  height: 4rem;
-  margin: 1rem;
-  font-size: 1.5rem;
-  border: 1px solid #ccc;
+  font-size: 1.3rem;
+  border: 1px solid var(--color-borders);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
   padding: 1rem;
@@ -30,8 +38,7 @@
 
 .container input::placeholder {
   color: #999;
-  font-size: 1.5rem;
-  font-style: italic;
+  font-size: 1.3rem;
 }
 
 /* Remove the inner shadow in Chrome */
@@ -42,16 +49,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .container textarea {
-  width: 100%; /* take up the full width of the container */
+  grid-column: 1 / -1;
   height: 10rem;
   padding: 1rem;
-  margin: 1rem;
-  font-size: 1.5rem;
-  border: 1px solid #ccc;
+  font-size: 1.3rem;
+  border: 1px solid var(--color-borders);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
-  box-sizing: border-box; /* include padding and border in width calculation */
-  resize: none; /* prevent textarea from being resizable */
+  box-sizing: border-box;
+  resize: none;
 }
 
 .container textarea:hover {
@@ -66,11 +72,12 @@ input[type="number"]::-webkit-outer-spin-button {
 .container textarea::placeholder {
   color: #999;
   font-size: 1.5rem;
-  font-style: italic;
 }
 
 .container .addBtn {
   background-color: var(--color-accent);
+  margin: 0 auto;
+  grid-column: 1 / -1;
   color: #fff;
   font-weight: 600;
   padding: 1rem 2rem;
@@ -78,15 +85,19 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 1rem;
 }
 
 .container .addBtn:hover {
   opacity: 0.9;
-  transform: translateY(-1px);
+  box-shadow: var(--color-accent) 0px 7px 20px 0px;
 }
 
 .container .addBtn:active {
   background-color: var(--color-accent);
   opacity: 0.8;
+}
+.container .inputErrors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

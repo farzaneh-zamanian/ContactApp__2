@@ -13,7 +13,7 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-      (response) => response.data,
+      (response) => response,
       (error) => Promise.reject(error)
 )
 
