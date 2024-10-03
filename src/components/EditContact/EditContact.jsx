@@ -1,10 +1,12 @@
-import { useContacts } from "../../context/ContactsProvider";
+// import { useContacts } from "../../context/ContactsProvider";
 import { useState } from "react";
 import styles from "./EditContact.module.css";
 import inputs from "../../constants/inputs";
+import useContactsContext from "../../hook/useContactsContext";
 
 function EditContact({ contact }) {
-  const { setEditMode, editContactHandler } = useContacts();
+  const { setEditMode, editContactHandler } =   useContactsContext();
+
   const [editedContact, setEditedContact] = useState(contact);
   const changeHandler = (event) => {
     const { name, value } = event.target;

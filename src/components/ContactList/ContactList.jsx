@@ -2,12 +2,13 @@ import styles from "./ContactList.module.css";
 
 import SearchBox from "../SearchBox/SearchBox";
 import LoadingContacts from "../Loading/Loading";
-import { useContacts } from "../../context/ContactsProvider";
 import ContactItems from "../ContactItems/ContactItems";
+import useContactsContext from "../../hook/useContactsContext";
 
 function ContactList() {
   const { state, selectAllChecked, handleSelectAll, handleDelete } =
-    useContacts();
+  useContactsContext();
+    
 
   return (
     <div className={styles.container}>

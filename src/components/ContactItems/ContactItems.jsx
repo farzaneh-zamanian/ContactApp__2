@@ -5,9 +5,10 @@ import { BsTelephoneForward } from "react-icons/bs";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useContacts } from "../../context/ContactsProvider";
+// import { useContacts } from "../../context/ContactsProvider";
 
 import EditContact from "../EditContact/EditContact";
+import useContactsContext from "../../hook/useContactsContext";
 
 function ContactItems({ contact }) {
   const {
@@ -17,7 +18,8 @@ function ContactItems({ contact }) {
     editContactHandler,
     selectedContacts,
     handleSelect,
-  } = useContacts();
+  } = useContactsContext();
+  
 
   const [currentContact, setCurrentContact] = useState({});
   const [deleteStatus, setDeleteStatus] = useState(false);

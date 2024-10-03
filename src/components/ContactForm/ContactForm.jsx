@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import inputs from "../../constants/inputs";
 import styles from "./ContactForm.module.css";
 import { validateInput } from "../../constants/inputsValidation";
-import { useContacts } from "../../context/ContactsProvider";
+import useContactsContext from "../../hook/useContactsContext";
 
 function ContactForm() {
-  const { dispatch, addContactHandler, clearAlertAndError } = useContacts(); //handel action alert
+  const { dispatch, addContactHandler, clearAlertAndError } = useContactsContext()
   // state - validation
   const [errors, setErrors] = useState({
     name: "",

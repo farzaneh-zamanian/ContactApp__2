@@ -1,10 +1,9 @@
 import Input from "./Input";
 import styles from "./SearchBox.module.css";
-import { useContacts } from "../../context/ContactsProvider";
+import useContactsContext from "../../hook/useContactsContext";
 
 function SearchBox() {
-  const { state, searchValue, setSearchValue, searchInputValueHandler } =
-    useContacts();
+  const { state, searchValue, setSearchValue } = useContactsContext();
 
   const handleSearch = (searchValue) => {
     const matchingContact = state.data.find((item) => {
@@ -39,8 +38,6 @@ function SearchBox() {
   return (
     <div className={styles.container}>
       <Input hint={searchValue} changeHandler={changeHandler} />
-
-
     </div>
   );
 }
