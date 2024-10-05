@@ -1,68 +1,62 @@
 import React, { useState, useEffect } from "react";
-import { api } from "../../services/config";
 import { Link, useParams } from "react-router-dom";
 import styles from "./ContactDetails.module.css";
+import useContactDetails from "../../hook/useContactDetails";
+
+
+import { FaArrowLeft } from "react-icons/fa";
 
 function ContactDetails() {
   const params = useParams();
-  const [contact, setContact] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchContact = () => {
-      setLoading(true);
-      api
-        .get(`/contacts/${params.id}`)
-        .then((response) => {
-          setContact(response.data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          setError(error);
-          setLoading(false);
-        });
-    };
-    fetchContact();
-  },[]);
+  const contactDetails = useContactDetails(params.id);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // useEffect(() => {
+  //   const fetchContact = () => {
+  //     setLoading(true);
+  //     api
+  //       .get(`/contacts/${params.id}`)
+  //       .then((response) => {
+  //         setContact(response.data);
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         setError(error);
+  //         setLoading(false);
+  //       });
+  //   };
+  //   fetchContact();
+  // }, []);
 
-  if (error) {
-    return (
-      <div className={styles.containerContactDetail}>
-        <label>Error:</label>
-        <span> {error.message}</span>
-      </div>
-    );
-  }
 
-  if (!contact) {
+  if (!contactDetails) {
     return <div>No contact found</div>;
   }
 
   return (
     <div className={styles.containerContactDetail}>
       <h2>
-        {contact.name} {contact.lastName}
+        {contactDetails.name} {contactDetails.lastName}
       </h2>
       <p>
         <label>Email:</label>
-        <span> {contact.email}</span>
+        <span> {contactDetails.email}</span>
       </p>
       <p>
         <label>Phone:</label>
-        <span> {contact.telephone}</span>
+        <span> {contactDetails.telephone}</span>
       </p>
       <p>
         <label>Description:</label>
-        <span>{contact.description}</span>
+        <span>{contactDetails.description}</span>
       </p>
-      <button className={styles.backBtn}>
-        <Link to="/contacts">Back </Link>
-      </button>
+
+      <div className={styles.actions}>     
+        <Link to="/contacts" >
+          <FaArrowLeft />
+          <span>back to contacts</span>
+        </Link>
+      </div>
     </div>
   );
 }

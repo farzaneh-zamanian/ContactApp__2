@@ -22,33 +22,30 @@
   color: var(--color-accent); 
 }
 
-.containerContactDetail span {
-  color: #333;
-}
+
 .containerContactDetail p {
   font-size: 1.2rem;
 }
 
-.backBtn {
+
+.actions {
+  width: 15rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--color-accent);
-  font-weight: 600;
-  padding: 1rem 2rem;
+  padding:  1rem;
+  color: #fff;
   border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
+  font-size: 1.2rem;
 }
-.backBtn a {
-  color: #fff !important;
+.actions a {
+  color: #fff;
+  }
+.actions a svg{
+margin-right: 1rem;
 }
 
-.backBtn:hover {
-  opacity: 0.9;
-  box-shadow: var(--color-accent) 0px 7px 20px 0px;
-}
-
-.backBtn:active {
-  background-color: var(--color-accent);
-  opacity: 0.8;
-}
