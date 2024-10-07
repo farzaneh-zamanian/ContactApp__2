@@ -1,14 +1,17 @@
-import React from "react";
-import styles from"./HomePage.module.css"
+import React, { useEffect } from "react";
+import styles from "./HomePage.module.css";
 import { NavLink } from "react-router-dom";
+import { useTitle } from "../../hook/useTitle";
 
 function HomePage() {
+  useTitle("Home Page");
+
   return (
     <main>
       {/* Hero Section */}
       <section className={styles.hero}>
         <h1>Stay connected with the people who matter</h1>
-        <NavLink to="/contacts" >
+        <NavLink to="/contacts">
           <button className={styles.cta}>Get Started</button>
         </NavLink>
       </section>
@@ -17,7 +20,7 @@ function HomePage() {
       <section className={styles.features}>
         <div className={styles.grid}>
           {/* Feature 1 */}
-          <div className={`${styles.feature} boxShadow` } >
+          <div className={`${styles.feature} boxShadow`}>
             <i className={styles.materialIcons}>search</i>
             <h3>Quick Search</h3>
             <p>Find contacts fast</p>
@@ -25,7 +28,7 @@ function HomePage() {
           </div>
 
           {/* Feature 2 */}
-          <div  className={`${styles.feature} boxShadow` } >
+          <div className={`${styles.feature} boxShadow`}>
             <i className={styles.materialIcons}>folder</i>
             <h3>Organize Contacts</h3>
             <p>Keep your contacts tidy</p>
@@ -33,7 +36,7 @@ function HomePage() {
           </div>
 
           {/* Feature 3 */}
-          <div  className={`${styles.feature} boxShadow` }>
+          <div className={`${styles.feature} boxShadow`}>
             <i className={styles.materialIcons}>cloud</i>
             <h3>Backup & Sync</h3>
             <p>Never lose a contact again</p>
@@ -41,7 +44,7 @@ function HomePage() {
           </div>
 
           {/* Feature 4 */}
-          <div  className={`${styles.feature} boxShadow` }>
+          <div className={`${styles.feature} boxShadow`}>
             <i className={styles.materialIcons}>phone</i>
             <h3>Smart Dialer</h3>
             <p>Make calls with ease</p>

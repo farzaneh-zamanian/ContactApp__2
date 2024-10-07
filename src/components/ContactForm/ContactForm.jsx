@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import inputs from "../../constants/inputs";
 import styles from "./ContactForm.module.css";
 import { validateInput } from "../../constants/inputsValidation";
 import useContactsContext from "../../hook/useContactsContext";
 
 function ContactForm() {
-  const { dispatch, addContactHandler, clearAlertAndError } = useContactsContext()
-  // state - validation
+  // CONTEXT
+  const { dispatch, addContactHandler, clearAlertAndError } =
+    useContactsContext();
+  // STATE - validation
   const [errors, setErrors] = useState({
     name: "",
     family: "",
@@ -14,7 +16,7 @@ function ContactForm() {
     telephone: "",
   });
 
-  // state -  new contact info
+  //  -  new contact info
   const [contact, setContact] = useState({
     name: "",
     family: "",
@@ -23,7 +25,14 @@ function ContactForm() {
     description: "",
   });
 
-  //  handle inputs value and errors
+  // useRef
+  const refInput = useRef(null);
+  // USEEFFECT
+  useEffect(() => {
+    refInput.current.focus();
+  }, []);
+
+  // ACTION - handle inputs value and errors
   const changeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -93,6 +102,7 @@ function ContactForm() {
                 key={index}
                 type={input.type}
                 name={input.name}
+                ref={input.name === "name" ? refInput : null}
                 placeholder={input.placeholder}
                 value={contact[input.name]}
                 onChange={changeHandler}
